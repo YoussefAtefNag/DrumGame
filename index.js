@@ -1,4 +1,5 @@
 
+
 function switchCases(key) {
   switch (key) {
     case "w":
@@ -46,12 +47,22 @@ for (var i = 0; i < document.querySelectorAll(".drum").length; i++) {
 
    var buttonInnerHTML = this.innerHTML;
 switchCases(buttonInnerHTML);
+buttonAnimation(buttonInnerHTML);
    
   });
 }
 
 document.addEventListener("keypress",function(event){
   switchCases(event.key);
-
+buttonAnimation(event.key);
 })
 
+function buttonAnimation(currentKey) {
+  var activeButton = document.querySelector("." + currentKey);
+  activeButton.classList.add("pressed");
+
+  setTimeout(function() {
+    activeButton.classList.remove("pressed");},100);
+
+  
+}
